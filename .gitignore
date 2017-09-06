@@ -21,3 +21,19 @@
 /yarn-error.log
 
 .byebug_history
+### https://raw.github.com/github/gitignore/7f2ce36bbebaff948bd9fa82b708d233adcb04c6/Global/vim.gitignore
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+
