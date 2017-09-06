@@ -3,6 +3,7 @@
 <h1><%= @shop.name %></h1>
 
 <%= link_to 'edit', edit_shop_path(@shop) %>
+<%= link_to 'delete', shop_path(@shop), method: :delete, data: {confirm: "OK?"} %>
 
 <p>
   説明: <%= @shop.description %>
