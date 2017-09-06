@@ -4,16 +4,36 @@ class ShopsController < ApplicationController
   end
 
   def new
+    @shop = Shop.new
   end
 
   def create
     @shop = Shop.new(shop_params)
-    @shop.save
-    redirect_to @shop
+    if @shop.save
+      redirect_to @shop
+    else
+      render 'new'
+    end
   end
 
   def show
     @shop = Shop.find(params[:id])
+  end
+
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
+  def update
+    @shop = Shop.find(params[:id])
+    puts @shop.nil?
+    puts @shop.errors.nil?
+
+    if @shop.update(shop_params)
+      redirect_to @shop
+    else
+      render 'edit'
+    end
   end
 
   private

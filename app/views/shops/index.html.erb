@@ -13,7 +13,7 @@
   <tbody>
   <% @shops.each do |shop| %>
     <tr>
-      <td><%= shop.name %></td>
+      <td><%= link_to shop.name, shop_path(shop) %></td>
       <td><%= shop.description %></td>
       <td><%= shop.url %></td>
     </tr>
