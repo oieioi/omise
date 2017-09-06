@@ -2,27 +2,4 @@
 
 <h1>おすすめ店の追加</h1>
 
-<%= form_for :shop, url: shops_path do |f| %>
-  <% if @shop.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
-      <ul>
-      <% @shop.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label :name %>: <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %>: <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :url %>: <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'form' %>

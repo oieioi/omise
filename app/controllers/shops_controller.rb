@@ -26,8 +26,6 @@ class ShopsController < ApplicationController
 
   def update
     @shop = Shop.find(params[:id])
-    puts @shop.nil?
-    puts @shop.errors.nil?
 
     if @shop.update(shop_params)
       redirect_to @shop
