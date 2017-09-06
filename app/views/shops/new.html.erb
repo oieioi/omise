@@ -1,0 +1,18 @@
+<nav> <%= link_to '戻る', shops_path %> </nav>
+
+<h1>お店の登録</h1>
+
+<%= form_for :shop, url: shops_path do |f| %>
+  <p>
+    <%= f.label :name %>: <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %>: <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :url %>: <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

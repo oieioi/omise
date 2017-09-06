@@ -1,0 +1,23 @@
+<h1>全ての店</h1>
+
+<nav> <%= link_to 'お店を追加', new_shop_path %> </nav>
+
+<table>
+  <thead>
+    <tr>
+      <th>店名</th>
+      <th>説明</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @shops.each do |shop| %>
+    <tr>
+      <td><%= shop.name %></td>
+      <td><%= shop.description %></td>
+      <td><%= shop.url %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</ul>
+
