@@ -41,6 +41,10 @@ module.exports = {
   modules: [
   ],
 
+  generate: {
+    fallback: true
+  },
+
   /*
   ** Build configuration
   */
