@@ -1,14 +1,30 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
+const express = require('express')
+const app = express();
 admin.initializeApp()
 
-exports.addMessage = functions.https.onRequest((req, res) => {
-  const original = req.query.text
+// index
+app.get('/', (req, res) => {
   return admin
     .database()
-    .ref('/messages')
-    .push({ original: original })
+    .ref('/shops')
+    .once('value')
     .then(snapshot => {
-      return res.redirect(303, snapshot.ref.toString())
+      return res.status(200).send(snapshot)
     })
 })
+
+// create
+app.post('/', (req, res) => {
+  const raw = { name: req.body.name, address: req.body.address }
+  return admin
+    .database()
+    .ref('/shops')
+    .push(raw)
+    .then(snapshot => {
+      return res.status(200).send(snapshot.ref.toJSON())
+    })
+})
+
+exports.shops = functions.https.onRequest(app);
