@@ -12,10 +12,17 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import axios from 'axios'
 
 export default {
   components: {
     Logo
+  },
+
+  async asyncData({ params }) {
+    let { data } = await axios.get('/api/shops')
+    console.log(data)
+    return { shops: data }
   }
 }
 </script>
