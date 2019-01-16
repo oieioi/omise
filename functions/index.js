@@ -1,7 +1,10 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 const express = require('express')
+const cors = require('cors')
+
 const app = express();
+app.use(cors({origin: true}));
 admin.initializeApp()
 
 // index
@@ -27,4 +30,10 @@ app.post('/', (req, res) => {
     })
 })
 
-exports.shops = functions.https.onRequest(app);
+// https://github.com/firebase/firebase-functions/issues/27#issuecomment-292768599
+exports.shops = functions.https.onRequest((req, res) => {
+  if (!req.path) {
+    req.url = `/${req.url}`
+  }
+  return app(req, res)
+});

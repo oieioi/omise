@@ -1,7 +1,11 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
+
+  router: {
+    middleware: 'axios-config'
+  },
 
   /*
   ** Headers of the page
@@ -39,6 +43,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/dotenv'
   ],
 
   generate: {

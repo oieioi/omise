@@ -13,6 +13,8 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import axios from 'axios'
+//import firebase from 'firebase/app'
+//import 'firebase/functions'
 
 export default {
   components: {
@@ -20,7 +22,7 @@ export default {
   },
 
   async asyncData({ params }) {
-    let { data } = await axios.get('/api/shops')
+    const { data } = await axios.get('/shops')
     console.log(data)
     return { shops: data }
   }
