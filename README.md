@@ -5,9 +5,11 @@
 Web API として Firebase Functions, Firebase Database を使ってるのでセットアップが必要。
 
 ```
+# cd this repo directory
 npm install --global firebase-tools
 firebase login
 firebase deploy --only functions
+cp .env.default .env
 ```
 
 で Functions の url を `.env` に記載する
