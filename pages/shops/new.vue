@@ -1,7 +1,6 @@
 <template>
   <section class="container">
-    <a href="/"> &lt;- back to index </a>
-    <h1>{{ inputs.name }}</h1>
+    <h2>{{ inputs.name }}</h2>
     <dl>
       <dt>name</dt><dd><input v-model="inputs.name"></dd>
       <dt>address</dt><dd><input v-model="inputs.address"></dd>

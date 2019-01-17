@@ -1,12 +1,22 @@
 <template>
   <div>
-    <nuxt/>
+    <header class="global-header">
+      <h1 class="title">omise</h1>
+      <nav>
+        <router-link :to="{ name: 'index' }"><a>index</a></router-link>
+        <router-link :to="{ name: 'shops-new' }"><a>create</a></router-link>
+      </nav>
+    </header>
+    <main class="global-main">
+      <nuxt/>
+    </main>
   </div>
 </template>
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: Courier, sans-serif,
+    'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -51,5 +61,12 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.global-header {
+  background-color: #bbb;
+  padding: 10px;
+}
+.global-main {
+  padding: 10px;
 }
 </style>

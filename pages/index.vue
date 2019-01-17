@@ -1,23 +1,33 @@
 <template>
   <section class="container">
-    <div>
-      <h1 class="title">omise</h1>
-      <div class="subtitle">
-        <a href="/shops/new">create shop</a>
-        <a href="/">list {{ shops.length }}</a>
-      </div>
-      <ul>
-        <li
+    <table>
+      <thead>
+        <tr>
+          <th>店名</th>
+          <th>エリア</th>
+          <th>予算</th>
+          <th>特徴</th>
+          <th>食べログ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
           v-for="shop in shops"
           :key="shop.id">
-          <router-link
-            :to="{ name: 'shops-id', params: { id: shop.id, name: shop.name }}"
-            tag="li">
-            <a> {{ shop.name || shop.id }} </a>
-          </router-link>
-        </li>
-      </ul>
-    </div>
+          <td>
+            <router-link
+              :to="{ name: 'shops-id', params: { id: shop.id, name: shop.name }}"
+              tag="tr">
+              <a> {{ shop.name || shop.id }} </a>
+            </router-link>
+          </td>
+          <td>{{ shop.area }}</td>
+          <td>{{ shop.budget }}</td>
+          <td>{{ shop.feature }}</td>
+          <td>{{ shop.tabelog_url }}</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </template>
 
@@ -34,8 +44,26 @@ export default {
   }
 }
 </script>
-
 <style>
-.container {
+table {
+  border: 1px solid #ddd;
+  border-spacing: 1px;
+  margin: 0;
+  padding: 0;
+}
+thead {
+  background-color: #ddd;
+  margin: 0;
+  padding: 0;
+}
+th {
+  margin: 0;
+  padding: 0;
+}
+tr {
+  border: 0;
+}
+td {
+  border: 1px solid #eee;
 }
 </style>
