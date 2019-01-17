@@ -102,4 +102,4 @@ tags
 # Persistent undo
 [._]*.un~
 
-
+.firebase/
