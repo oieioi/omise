@@ -61,15 +61,18 @@ app.delete('/:id', (req, res) => {
 // create
 app.post('/', (req, res) => {
   const raw = { name: req.body.name || '', address: req.body.address || '' }
-  console.log(raw)
   return admin
     .database()
     .ref('/shops')
     .push(raw)
     .then(snapshot => {
-      return res.status(201).send(snapshot.ref.toJSON())
+      // TODO: 適当
+      return res.status(201).send({id: snapshot.ref.path.pieces_[1]})
     })
-    .catch( e => res.status(500).send('ng') )
+    .catch( e => {
+      console.error(e)
+      res.status(500).send('ng')
+    })
 })
 
 // https://github.com/firebase/firebase-functions/issues/27#issuecomment-292768599

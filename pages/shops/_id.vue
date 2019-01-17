@@ -57,7 +57,7 @@ export default {
         const ok = confirm(`YOU WANT TO DELETE ${this.inputs.name} ?`);
         if (!ok) return;
         const result = await axios.delete(`/shops/${this.inputs.id}`);
-        alert('deleted!');
+        this.$router.push({ name: 'index' })
       } catch (e) {
         alert('somethind wrong!');
       }

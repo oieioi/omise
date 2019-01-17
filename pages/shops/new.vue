@@ -24,7 +24,14 @@ export default {
 
   methods: {
     async create() {
-      const result = await axios.post('/shops', this.inputs);
+      try {
+        const { data } = await axios.post('/shops', this.inputs);
+        console.log(data);
+        this.$router.push({ name: 'shops-id', params: { id: data.id }})
+      } catch (e) {
+        alert('something wrong!!');
+        console.error(e);
+      }
     }
   }
 }
