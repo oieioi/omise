@@ -1,6 +1,16 @@
 # omise
 
-> omise
+## Firebase の設定
+
+Web API として Firebase Functions, Firebase Database を使ってるのでセットアップが必要。
+
+```
+npm install --global firebase-tools
+firebase login
+firebase deploy --only functions
+```
+
+で Functions の url を `.env` に記載する
 
 ## Build Setup
 

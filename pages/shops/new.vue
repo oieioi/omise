@@ -1,38 +1,20 @@
 <template>
   <section class="container">
-    <h2>{{ inputs.name }}</h2>
-    <dl>
-      <dt>name</dt><dd><input v-model="inputs.name"></dd>
-      <dt>address</dt><dd><input v-model="inputs.address"></dd>
-    </dl>
-    <button @click="create">create</button>
+    <h2>新規登録</h2>
+    <shops-form :inputs="inputs" />
   </section>
 </template>
 
 <script>
 import axios from 'axios'
+import ShopsForm from '~/components/shops/form.vue'
 
 export default {
-  data() {
-    return {
-      inputs: {
-        name: '',
-        address: ''
-      }
-    }
+  components: {
+    ShopsForm
   },
 
   methods: {
-    async create() {
-      try {
-        const { data } = await axios.post('/shops', this.inputs);
-        console.log(data);
-        this.$router.push({ name: 'shops-id', params: { id: data.id }})
-      } catch (e) {
-        alert('something wrong!!');
-        console.error(e);
-      }
-    }
   }
 }
 </script>
