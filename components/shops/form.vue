@@ -21,12 +21,16 @@
       v-if="inputs.id"
       @click="update">update</button>
     <button
-      v-else
+      v-if="!inputs.id"
       @click="create">create</button>
-    <button @click="destroy">destroy</button>
+    <button
+      v-if="inputs.id"
+      @click="destroy">destroy</button>
   </section>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   props: {
     inputs: {
@@ -43,21 +47,22 @@ export default {
   methods: {
     async update() {
       try {
+        console.log(this.inputs);
         const { data } = await axios.put(`/shops/${this.inputs.id}`, this.inputs);
         alert('updated!');
-        this.inputs = data;
       } catch (e) {
-        alert('somethind wrong!');
+        console.error(e);
+        alert('something wrong!');
       }
     },
     async create() {
       try {
         const { data } = await axios.post('/shops', this.inputs);
-        console.log(data);
+        alert('created!');
         this.$router.push({ name: 'shops-id', params: { id: data.id }})
       } catch (e) {
-        alert('something wrong!!');
         console.error(e);
+        alert('something wrong!!');
       }
     },
     async destroy() {
@@ -67,7 +72,8 @@ export default {
         const result = await axios.delete(`/shops/${this.inputs.id}`);
         this.$router.push({ name: 'index' })
       } catch (e) {
-        alert('somethind wrong!');
+        alert('something wrong!');
+        console.error(e);
       }
     }
   }
