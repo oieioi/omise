@@ -60,11 +60,11 @@ app.delete('/:id', (req, res) => {
 
 // create
 app.post('/', (req, res) => {
-  const raw = { name: req.body.name || '', address: req.body.address || '' }
+  // TODO: クソ雑
   return admin
     .database()
     .ref('/shops')
-    .push(raw)
+    .push(req.body)
     .then(snapshot => {
       // TODO: 適当
       return res.status(201).send({id: snapshot.ref.path.pieces_[1]})
