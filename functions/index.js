@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     .ref('/shops')
     .once('value')
     .then(snapshot => {
-      const shops = Object.entries(snapshot.val()).map(item => {
+      const shops = Object.entries(snapshot.val() || []).map(item => {
         const id = item[0];
         const value = item[1];
         return Object.assign({id: id},value);

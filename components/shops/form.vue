@@ -11,7 +11,7 @@
           <option value="">select</option>
           <option value="low">低め</option>
           <option value="middle">普通</option>
-          <option value="hight">高め</option>
+          <option value="high">高め</option>
         </select>
       </dd>
       <dt>特徴</dt><dd><textarea v-model="inputs.feature"/></dd>
